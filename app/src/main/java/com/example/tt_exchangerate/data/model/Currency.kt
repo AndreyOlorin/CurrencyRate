@@ -1,4 +1,4 @@
-package com.example.tt_exchangerate.data
+package com.example.tt_exchangerate.data.model
 
 data class Currency(
     val abbreviationName: String,
