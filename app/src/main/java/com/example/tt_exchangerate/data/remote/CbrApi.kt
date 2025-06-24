@@ -1,4 +1,4 @@
-package com.example.tt_exchangerate.data
+package com.example.tt_exchangerate.data.remote
 
 import retrofit2.http.GET
 
