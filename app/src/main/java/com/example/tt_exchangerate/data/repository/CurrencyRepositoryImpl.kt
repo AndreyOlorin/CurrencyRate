@@ -9,5 +9,15 @@ class CurrencyRepositoryImpl @Inject constructor(
     private val api: CbrApi
 ) : CurrencyRepository {
 
-
+    override suspend fun getCurrencies(): List<CurrencyDomain> {
+        val response = api.getDailyRates()
+        return response.Valute.values.map { item ->
+            CurrencyDomain(
+                abbreviationName = item.CharCode,
+                decryptionName = item.Name,
+                courseNow = item.Value,
+                courseLast = item.Previous
+            )
+        }
+    }
 }
