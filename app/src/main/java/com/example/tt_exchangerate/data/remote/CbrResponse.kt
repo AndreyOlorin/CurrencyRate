@@ -5,4 +5,8 @@ data class CbrResponse(
 )
 
 data class ValuteItem(
+    val CharCode: String,
+    val Name: String,
+    val Value: Double,
+    val Previous: Double
 )
