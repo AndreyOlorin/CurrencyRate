@@ -22,4 +22,12 @@ object AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    @Provides
+    @Singleton
+    fun provideCbrApi(retrofit: Retrofit): CbrApi = retrofit.create(CbrApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideCurrencyRepository(api: CbrApi): CurrencyRepository =
+        CurrencyRepositoryImpl(api)
 }
