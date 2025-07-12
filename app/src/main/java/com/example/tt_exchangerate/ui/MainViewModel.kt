@@ -23,4 +23,17 @@ class MainViewModel @Inject constructor(private val getCurrenciesUseCase: GetCur
         loadCurrencies()
     }
 
+    private fun loadCurrencies() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                _currencies.value = getCurrenciesUseCase()
+            }
+            catch (e: Exception) {
+            }
+            finally {
+                _isLoading.value = false
+            }
+        }
+    }
 }
