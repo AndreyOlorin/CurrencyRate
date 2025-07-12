@@ -29,4 +29,20 @@ class MainActivity : AppCompatActivity(), CourseOnClickListener {
         }
     }
 
+    private fun setupRecyclerView() {
+        adapter = Adapter(this)
+        binding.recycleExchange.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            this.adapter = this@MainActivity.adapter
+        }
+    }
+
+    private fun observeData() {
+        viewModel.currencies.observe(this) { currencies ->
+            adapter.submitList(currencies)
+        }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+        }
+    }
 }
