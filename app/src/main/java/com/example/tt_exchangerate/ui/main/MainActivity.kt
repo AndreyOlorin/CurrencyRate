@@ -45,4 +45,13 @@ class MainActivity : AppCompatActivity(), CourseOnClickListener {
         viewModel.isLoading.observe(this) { isLoading ->
         }
     }
+
+    override fun onClick(position: Int) {
+        val currency = viewModel.currencies.value[position]
+        val intent = Intent(this, ConversionActivity::class.java).apply {
+            putExtra("abbreviation", currency.abbreviationName)
+            putExtra("course", currency.courseNow)
+        }
+        startActivity(intent)
+    }
 }
