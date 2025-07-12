@@ -16,5 +16,11 @@ class MainViewModel @Inject constructor(private val getCurrenciesUseCase: GetCur
     private val _currencies = MutableStateFlow<List<CurrencyDomain>>(emptyList())
     val currencies: StateFlow<List<CurrencyDomain>> = _currencies
 
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
+    init {
+        loadCurrencies()
+    }
 
 }
