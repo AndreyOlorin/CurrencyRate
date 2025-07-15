@@ -19,4 +19,24 @@ class Adapter(
         )
         return ViewHolder(binding)
     }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(position)
+        }
+    }
+
+    class ViewHolder(private val binding: ItemForExchangeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(currency: CurrencyDomain) {
+            binding.apply {
+                abbreviation.text = currency.abbreviationName
+                decryption.text = currency.decryptionName
+                courseNow.text = currency.courseNow.toString()
+                courseLast.text = currency.courseLast.toString()
+            }
+        }
+    }
 }
