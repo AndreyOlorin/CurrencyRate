@@ -39,4 +39,12 @@ class Adapter(
             }
         }
     }
+
+    class CurrencyDiffCallback : DiffUtil.ItemCallback<CurrencyDomain>() {
+        override fun areItemsTheSame(oldItem: CurrencyDomain, newItem: CurrencyDomain): Boolean =
+            oldItem.abbreviationName == newItem.abbreviationName
+
+        override fun areContentsTheSame(oldItem: CurrencyDomain, newItem: CurrencyDomain): Boolean =
+            oldItem == newItem
+    }
 }
